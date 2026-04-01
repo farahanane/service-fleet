@@ -1,6 +1,7 @@
 package com.pi.fleetservice.entities;
 
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 public class Bus {
@@ -12,9 +13,14 @@ public class Bus {
     private String plateNumber;
     private int capacity;
     private String status;
+
+    @JsonProperty("chauffeurId")
+    @Column(name = "chauffeur_id")
+    private Long chauffeurId;
     public Long getId() {
         return id;
     }
+
 
     public String getPlateNumber() {
         return plateNumber;
@@ -39,5 +45,11 @@ public class Bus {
     public void setStatus(String status) {
         this.status = status;
     }
+    public Long getChauffeurId() {
+        return chauffeurId;
+    }
 
+    public void setChauffeurId(Long chauffeurId) {
+        this.chauffeurId = chauffeurId;
+    }
 }

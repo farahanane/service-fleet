@@ -21,6 +21,7 @@ public class Schedule {
     @ManyToOne
     @JoinColumn(name = "route_id")
     private Route route;
+    private double price;
 
     // --- GETTERS & SETTERS ---
 
@@ -66,5 +67,12 @@ public class Schedule {
 
     public void setRoute(Route route) {
         this.route = route;
+    }
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

@@ -1,6 +1,6 @@
 package com.pi.fleetservice.controllers;
 
-import com.pi.fleetservice.entities.Route;
+import com.pi.fleetservice.dto.RouteDTO;
 import com.pi.fleetservice.services.RouteService;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,23 +17,23 @@ public class RouteController {
     }
 
     @PostMapping
-    public Route create(@RequestBody Route route) {
-        return service.create(route);
+    public RouteDTO create(@RequestBody RouteDTO dto) {
+        return service.create(dto);
     }
 
     @GetMapping
-    public List<Route> getAll() {
+    public List<RouteDTO> getAll() {
         return service.getAll();
     }
 
     @GetMapping("/{id}")
-    public Route getById(@PathVariable Long id) {
+    public RouteDTO getById(@PathVariable Long id) {
         return service.getById(id);
     }
 
     @PutMapping("/{id}")
-    public Route update(@PathVariable Long id, @RequestBody Route route) {
-        return service.update(id, route);
+    public RouteDTO update(@PathVariable Long id, @RequestBody RouteDTO dto) {
+        return service.update(id, dto);
     }
 
     @DeleteMapping("/{id}")

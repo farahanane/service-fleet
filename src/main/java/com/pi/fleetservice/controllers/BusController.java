@@ -1,6 +1,6 @@
 package com.pi.fleetservice.controllers;
 
-import com.pi.fleetservice.entities.Bus;
+import com.pi.fleetservice.dto.BusDTO;
 import com.pi.fleetservice.services.BusService;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,23 +17,23 @@ public class BusController {
     }
 
     @PostMapping
-    public Bus create(@RequestBody Bus bus) {
-        return service.create(bus);
+    public BusDTO create(@RequestBody BusDTO dto) {
+        return service.create(dto);
     }
 
     @GetMapping
-    public List<Bus> getAll() {
+    public List<BusDTO> getAll() {
         return service.getAll();
     }
 
     @GetMapping("/{id}")
-    public Bus getById(@PathVariable Long id) {
+    public BusDTO getById(@PathVariable Long id) {
         return service.getById(id);
     }
 
     @PutMapping("/{id}")
-    public Bus update(@PathVariable Long id, @RequestBody Bus bus) {
-        return service.update(id, bus);
+    public BusDTO update(@PathVariable Long id, @RequestBody BusDTO dto) {
+        return service.update(id, dto);
     }
 
     @DeleteMapping("/{id}")

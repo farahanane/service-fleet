@@ -1,5 +1,6 @@
 package com.pi.fleetservice.controllers;
 
+import com.pi.fleetservice.dto.ScheduleDTO;
 import com.pi.fleetservice.entities.Schedule;
 import com.pi.fleetservice.services.ScheduleService;
 import org.springframework.web.bind.annotation.*;
@@ -17,27 +18,33 @@ public class ScheduleController {
     }
 
     @PostMapping
-    public Schedule create(@RequestBody Schedule schedule) {
-        return service.create(schedule);
+    public ScheduleDTO create(@RequestBody Schedule schedule) {
+        Schedule saved = service.create(schedule);
+        return service.convertToDTO(saved);
     }
 
     @GetMapping
     public List<Schedule> getAll() {
-        return service.getAll();
+        return service.getAll(); // you can improve later
     }
 
     @GetMapping("/{id}")
-    public Schedule getById(@PathVariable Long id) {
+    public ScheduleDTO getById(@PathVariable Long id) {
         return service.getById(id);
     }
 
     @PutMapping("/{id}")
-    public Schedule update(@PathVariable Long id, @RequestBody Schedule schedule) {
-        return service.update(id, schedule);
+    public ScheduleDTO update(@PathVariable Long id, @RequestBody Schedule schedule) {
+        Schedule updated = service.update(id, schedule);
+        return service.convertToDTO(updated);
     }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         service.delete(id);
+    }
+    @PutMapping("/{id}/decrease-seats")
+    public void decreaseSeats(@PathVariable Long id, @RequestParam int seats) {
+        service.decreaseSeats(id, seats);
     }
 }
