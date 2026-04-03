@@ -71,4 +71,11 @@ public class ScheduleService {
 
         repository.save(schedule);
     }
+    public void increaseSeats(Long scheduleId, int seats) {
+        Schedule schedule = getEntityById(scheduleId);
+
+        schedule.setAvailableSeats(schedule.getAvailableSeats() + seats);
+
+        repository.save(schedule);
+    }
 }

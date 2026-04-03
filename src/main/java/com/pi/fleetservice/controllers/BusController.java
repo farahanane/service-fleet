@@ -5,7 +5,6 @@ import com.pi.fleetservice.services.BusService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 @RestController
 @RequestMapping("/buses")
 public class BusController {

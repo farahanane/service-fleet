@@ -6,7 +6,6 @@ import com.pi.fleetservice.services.ScheduleService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 @RestController
 @RequestMapping("/schedules")
 public class ScheduleController {
@@ -23,9 +22,10 @@ public class ScheduleController {
         return service.convertToDTO(saved);
     }
 
+    // ✅ FIXED HERE
     @GetMapping
     public List<Schedule> getAll() {
-        return service.getAll(); // you can improve later
+        return service.getAll();
     }
 
     @GetMapping("/{id}")
@@ -43,8 +43,14 @@ public class ScheduleController {
     public void delete(@PathVariable Long id) {
         service.delete(id);
     }
+
     @PutMapping("/{id}/decrease-seats")
     public void decreaseSeats(@PathVariable Long id, @RequestParam int seats) {
         service.decreaseSeats(id, seats);
+    }
+
+    @PutMapping("/{id}/increase-seats")
+    public void increaseSeats(@PathVariable Long id, @RequestParam int seats) {
+        service.increaseSeats(id, seats);
     }
 }

@@ -5,7 +5,6 @@ import com.pi.fleetservice.services.RouteService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 @RestController
 @RequestMapping("/routes")
 public class RouteController {
